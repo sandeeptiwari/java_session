@@ -1,4 +1,4 @@
-package Day4;
+package Training_sesssion;
 
 import java.util.Scanner;
 
