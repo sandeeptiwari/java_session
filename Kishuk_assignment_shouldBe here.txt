@@ -1,0 +1,5 @@
+Hi you assignment should be inside this directory and then run below commands
+
+1- git add .
+2- git commit -m "assignment name"
+3- git push
