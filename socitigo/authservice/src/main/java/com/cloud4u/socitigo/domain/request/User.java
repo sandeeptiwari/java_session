@@ -1,18 +1,16 @@
 package com.cloud4u.socitigo.domain.request;
 
 public class User {
-    private String name;
+    private String username;
     private String mobileNo;
     private String password;
-    private Long orgId;
-    private String roll;
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getMobileNo() {
@@ -29,21 +27,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Long getOrgId() {
-        return orgId;
-    }
-
-    public void setOrgId(Long orgId) {
-        this.orgId = orgId;
-    }
-
-    public String getRoll() {
-        return roll;
-    }
-
-    public void setRoll(String roll) {
-        this.roll = roll;
     }
 }
