@@ -1,13 +1,11 @@
 export class Member {
-  name: string;
-  emailId: string;
+  username: string;
+  mobileNo: string;
   password: string;
-  orgId: number;
 
-  constructor(name: string, emailId: string, password: string, orgId: number) {
-    this.name = name;
-    this.emailId = emailId;
+  constructor(username: string, mobileNo: string, password: string) {
+    this.username = username;
+    this.mobileNo = mobileNo;
     this.password = password;
-    this.orgId = orgId;
   }
 }

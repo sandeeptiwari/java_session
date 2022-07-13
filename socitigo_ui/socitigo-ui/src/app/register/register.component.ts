@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   registration = () => {
     const val = this.registerForm.value;
     console.log('Registration Value ', val);
-    const member = new Member(val.name, val.emailId, val.password, val.orgId);
+    //const member = new Member(val.name, val.emailId, val.password, val.orgId);
     // call the API to register the member
     /*this.shareService.registration(member).subscribe((response) => {
       console.log(response);

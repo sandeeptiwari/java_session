@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Member } from '../domain/member';
 import { ShareService } from '../share.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
     private shareService: ShareService
   ) {
     this.loginForm = fb.group({
-      emailId: ['', [Validators.required]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
   }
@@ -29,11 +30,11 @@ export class LoginComponent implements OnInit {
     const val = this.loginForm.value;
     console.log('Form value ', val);
     this.loader = true;
-    /*this.shareService.login(val.emailId, val.password).subscribe((res) => {
+    const member = new Member(val.username, '12345678', val.password);
+    this.shareService.login(member).subscribe((res) => {
       console.log('Login ', res);
       this.loader = false;
       this.router.navigate(['dashbord'], { relativeTo: this.route.parent });
     });
-    */
   };
 }
