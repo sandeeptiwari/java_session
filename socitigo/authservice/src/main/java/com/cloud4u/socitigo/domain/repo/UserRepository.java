@@ -7,9 +7,9 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
-public interface LoginRepository extends JpaRepository<Member, Long> {
+public interface UserRepository extends JpaRepository<Member, Long> {
 
-    @Query("select m From Member m where m.username= :username " +
+    @Query("select m From Member m where m.name= :username " +
             "AND m.password = :password")
     Optional<Member> findUserNameAndPassword(@Param("username") String username,
                                              @Param("password") String password);

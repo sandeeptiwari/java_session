@@ -11,14 +11,21 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String username;
+    private String name;
     private String password;
 
-    private String firstName;
-
-    private String lastName;
+    private Long orgId;
 
     private String emailId;
+
+    public Member() {}
+
+    public Member(String name, String password, Long orgId, String emailId) {
+        this.name = name;
+        this.password = password;
+        this.orgId = orgId;
+        this.emailId = emailId;
+    }
 
     public Long getId() {
         return id;
@@ -28,12 +35,12 @@ public class Member {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -44,20 +51,12 @@ public class Member {
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public Long getOrgId() {
+        return orgId;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setOrgId(Long orgId) {
+        this.orgId = orgId;
     }
 
     public String getEmailId() {

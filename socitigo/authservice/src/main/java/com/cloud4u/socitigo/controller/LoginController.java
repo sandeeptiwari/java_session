@@ -1,6 +1,8 @@
 package com.cloud4u.socitigo.controller;
 
-import com.cloud4u.socitigo.domain.request.User;
+import com.cloud4u.socitigo.domain.request.Login;
+import com.cloud4u.socitigo.domain.request.RegisterUser;
+import com.cloud4u.socitigo.exception.UserNotFoundException;
 import com.cloud4u.socitigo.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +19,13 @@ public class LoginController {
         this.userService = userService;
     }
 
-    @GetMapping("/test")
-    public String login1() {
-        return "new ResponseEntity<>(userService.login(user), HttpStatus.OK)";
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody RegisterUser user) {
+        return new ResponseEntity<>(userService.register(user), HttpStatus.OK);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody User user) {
+    public ResponseEntity<?> login(@RequestBody Login user) throws UserNotFoundException {
         return new ResponseEntity<>(userService.login(user), HttpStatus.OK);
     }
 }

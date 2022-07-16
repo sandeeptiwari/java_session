@@ -1,7 +1,7 @@
-POST http://localhost:8081/socitigo/authservice/api/login
+POST http://localhost:8082/socitigo/authservice/api/register
 Content-Type: application/json
 
-{"username" : "john", "mobileNo": "12345678", "password":"1234"}
+{"name" : "john", "password": "pass123", "orgId": 1002, "emailId":  "john@gmail.com"}
 
 ###
 
@@ -17,4 +17,11 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8081/socitigo/authservice/api/test
+
+###
+
+POST http://localhost:8082/socitigo/authservice/api/login
+Content-Type: application/json
+
+{"name" : "john", "password": "pass124"}
 

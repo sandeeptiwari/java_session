@@ -1,34 +1,38 @@
 package com.cloud4u.socitigo.service;
 
 import com.cloud4u.socitigo.domain.entity.Member;
-import com.cloud4u.socitigo.domain.repo.LoginRepository;
-import com.cloud4u.socitigo.domain.request.User;
+import com.cloud4u.socitigo.domain.repo.UserRepository;
+import com.cloud4u.socitigo.domain.request.Login;
+import com.cloud4u.socitigo.domain.request.RegisterUser;
 import com.cloud4u.socitigo.exception.UserNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.NoSuchElementException;
-
 @Service
 public class UserService {
-    private final LoginRepository loginRepository;
+    private final UserRepository userRepository;
 
-    public UserService(LoginRepository loginRepository) {
-        this.loginRepository = loginRepository;
+    public UserService(UserRepository loginRepository) {
+        this.userRepository = loginRepository;
     }
 
-    public Member login(User user) {
+    public Member login(Login user) throws UserNotFoundException {
         Member member = null;
-        try {
-            member = loginRepository
-                    .findUserNameAndPassword(user.getUsername(), user.getPassword()).get();
-                    //.orElseThrow(() -> new UserNotFoundException("username or password is incorrect"));
-        } catch (NoSuchElementException e) {
-            e.printStackTrace();
-        }
-        member = new Member();
-        member.setEmailId("xyz@gmail.com");
-        member.setFirstName("Mukesh");
-        member.setLastName("Kumar");
-        return member;
+        return userRepository
+                .findUserNameAndPassword(user.getName(), user.getPassword())
+                .orElseThrow(() -> new UserNotFoundException("username or password is incorrect"));
+    }
+
+    public RegisterUser register(RegisterUser user) {
+        var member = new Member(
+                user.getName(),
+                user.getPassword(),
+                user.getOrgId(),
+                user.getEmailId());
+
+        var savedMember = userRepository.save(member);
+        return new RegisterUser(savedMember.getName(),
+                savedMember.getPassword(),
+                savedMember.getEmailId(),
+                savedMember.getOrgId());
     }
 }
